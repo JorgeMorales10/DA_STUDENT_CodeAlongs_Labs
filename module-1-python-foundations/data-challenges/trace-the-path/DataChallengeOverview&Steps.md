@@ -1,4 +1,4 @@
-# Data Challenge: Trace the Path
+ # Data Challenge: Trace the Path
 
 **GitBook quest:** [Quest 1.1: Trace the Path](https://marcylabschool-da.gitbook.io/marcylabschool_da-docs/modules/module-01/quest-01-control-flow) (quest runs Days 1-2)
 
