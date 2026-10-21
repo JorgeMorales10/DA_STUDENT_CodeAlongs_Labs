@@ -29,7 +29,12 @@ print('----- 1. Define and Call, Live -----')
 # TODO: define a function named greet that prints a welcome
 # message, then call it twice
 
+def greet(user_name):
+    print("Welcome", user_name)
+   #print("Welcome" + user_name) < another choice
 
+greet("Heather")
+greet("Micheal")
 # ===== 2. Parameters, Live =====
 # Make greet work for anyone: pass in a name and print a personal welcome for
 # Jordan and Amara.
@@ -55,6 +60,13 @@ print('----- 2. Parameters, Live -----')
 # Send a value back with return so you can use it in math. double(5) plus 1
 # should print 11.
 print('----- 3. Return, Live -----')
+def double(n):
+    return n * 2
+
+result = double(7) 
+print(result + 1)
+#print(double(7) + 1) > another way of writing this function
+
 # TODO: write double(n) using return (not print), then use
 # its result in an expression - add 1 to it and print that
 
