@@ -125,13 +125,8 @@ print("shifts of 4+ hours:", long_shifts)
 total = 0
 for shift in shifts:
     volunteer, day, hours = shift.split(",")
-    hours = total + hours
-    # TODO: add this shift's hours onto the running total. Mind the
-    #       type: everything that came out of that split is a string.
-    total = None
-    # TODO: print one line per pass: the day, the volunteer, and the
-    #       total so far. This printed line IS the tracing tool.
-    print(day, volunteer, "| running total:", None)
+    total += int(hours) #this shows you how it adds on the total from each shifts
+    print(day, volunteer, "| running total:", total)
 
 print("total hours logged this week:", total)
 
@@ -182,16 +177,16 @@ days = []
 for shift in shifts:
     volunteer, day, hours = shift.split(",")
     # TODO: only append a volunteer this list does not already have.
-    if None:
+    if volunteer is not volunteers:
         volunteers.append(volunteer)
     # TODO: the same test again, for the day.
-    if None:
+    if day is not days:
         days.append(day)
 
 checks = 0
 for volunteer in volunteers:
     # TODO: the inner loop. One pass per weekday, for each volunteer.
-    for day in None:
+    for day in days:
         checks = checks + 1
 
 print(len(volunteers), "volunteers x", len(days), "days =", checks)
@@ -220,9 +215,10 @@ for i in range(len(shifts) - 1):
     buggy_seen = buggy_seen + 1
 
 fixed_seen = 0
+     
 # TODO: write the loop header that visits EVERY row, not all but one.
 #       The body below is already correct. Only the range changes.
-for i in True:
+for i in range(len(shifts) - 1):
     fixed_seen = fixed_seen + 1
 
 print("rows in the file:   ", len(shifts))
