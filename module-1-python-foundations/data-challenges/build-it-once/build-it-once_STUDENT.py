@@ -44,17 +44,17 @@ SUBMIT
 
 # 1. What does one row represent?
 # Your answer:
-#
+#One row represents member, class name, and sessions.
 #
 
 # 2. Which fields hold numbers, and which hold text?
 # Your answer:
-#
-#
+#The field that holds number is sessions, and the field that holds text is 
+#members and class name.
 
 # 3. What already looks wrong, missing or inconsistent?
 # Your answer:
-#
+#The inconsistent sessions 
 #
 
 ############################################################################
@@ -83,7 +83,8 @@ with open("data/rec_center_signups.txt") as f:
                if line and not line.startswith("#")]
 
 def total_sessions(records):
-    # TODO: add up the sessions column across every record in `records`
+    print("records")
+    # TODO: add up the sessions column across every record in `records
     # TODO: hand the total back to whoever called this. Do not print it.
     pass
 
