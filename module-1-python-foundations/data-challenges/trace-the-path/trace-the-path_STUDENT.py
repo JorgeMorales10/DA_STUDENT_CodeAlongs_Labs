@@ -177,10 +177,10 @@ days = []
 for shift in shifts:
     volunteer, day, hours = shift.split(",")
     # TODO: only append a volunteer this list does not already have.
-    if volunteer is not volunteers:
+    if volunteer not in volunteers:
         volunteers.append(volunteer)
     # TODO: the same test again, for the day.
-    if day is not days:
+    if day not in days:
         days.append(day)
 
 checks = 0
