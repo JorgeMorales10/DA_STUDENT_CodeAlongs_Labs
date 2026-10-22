@@ -54,8 +54,8 @@ SUBMIT
 
 # 3. What already looks wrong, missing or inconsistent?
 # Your answer:
-#The inconsistent sessions 
-#
+#The look of it all is a bit confusing and each session for each member is in consistent having 
+#different amount and different values.
 
 ############################################################################
 #  DAY 1
@@ -78,17 +78,24 @@ SUBMIT
 # The arithmetic is the same arithmetic a plain loop would do. What changes
 # is that the answer comes back to you instead of going to the screen.
 
-with open("data/rec_center_signups.txt") as f:
+with open("../data/rec_center_signups.txt") as f:
     signups = [line for line in f.read().splitlines()
                if line and not line.startswith("#")]
 
 def total_sessions(records):
-    print("records")
+    total = 0
+    for record in records:
+        member, class_name, sessions = record.split(",")
+        total = total + int(sessions)
+        return total
     # TODO: add up the sessions column across every record in `records
     # TODO: hand the total back to whoever called this. Do not print it.
     pass
 
 swim_only = []
+for record in signups:
+    if "Swim" in record:
+        swim_only.append(record)
 # TODO: fill swim_only with just the Swim records
 
 print("every class:", total_sessions(signups))
