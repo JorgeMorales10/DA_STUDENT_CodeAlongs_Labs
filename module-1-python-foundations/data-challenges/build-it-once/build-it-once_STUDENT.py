@@ -122,11 +122,18 @@ print("swim only:  ", total_sessions(swim_only))
 # other only puts something on the screen.
 
 def count_long_bookings(records, minimum):
+    count = 0
+    for record in records:
+        member, class_name, session = record.split(",")
+        if int(session) >= minimum:
+             count = count + 1
+    return count
     # TODO: count the records whose sessions number is `minimum` or more
     # TODO: return the count
     pass
 
 def show_long_bookings(records, minimum):
+    the_total = count_long_bookings(records, minimum)
     # TODO: print a sentence with the same count in it. Only print.
     pass
 
@@ -137,7 +144,7 @@ handed_back = show_long_bookings(signups, 4)
 print("what show_long_bookings handed back:", handed_back)
 
 # Your answer:
-#
+#The parameters are the minimum and the arguments are 4 and 2.
 #
 
 # ----- Share Out: Day 1 -----
@@ -156,7 +163,7 @@ print("what show_long_bookings handed back:", handed_back)
 # Be ready to answer "why did you do it that way?"
 
 # Your notes for the share out:
-#
+#I saw it like the first step and starting adding the minimum and count.
 #
 
 ############################################################################
@@ -186,6 +193,12 @@ print("what show_long_bookings handed back:", handed_back)
 sessions_cutoff = 4
 
 def count_reaching_outside(records):
+    count = 0
+    if record in records:
+        member, class_name, session = record.split(",")
+        if int(session) >= sessions_cutoff:
+            count = count + 1
+        return count
     # TODO: same count as count_long_bookings, but take NO minimum
     # parameter. Read sessions_cutoff from outside the function instead.
     pass
@@ -193,6 +206,8 @@ def count_reaching_outside(records):
 print("cutoff", sessions_cutoff, "gives", count_reaching_outside(signups))
 
 sessions_cutoff = 2
+print("cutoff", sessions_cutoff, "gives", count_reaching_outside(signups))
+print("comparison with long bookings (min 4):", count_long_bookings(signups, 4))
 
 # TODO: call count_reaching_outside(signups) again, unchanged, and print it
 # TODO: print count_long_bookings(signups, 4) underneath for comparison
