@@ -239,12 +239,17 @@ print("comparison with long bookings (min 4):", count_long_bookings(signups, 4))
 # the steps after it can run.
 
 def log_signup(record, previous_member):
+    member = record.split(",")[0]
+    print("Previous:", previous_member, "| Current:", member)
+    return member
     # TODO: pull the member name out of `record`
     # TODO: print the previous member and this one on one line
     # TODO: return this member's name
     pass
 
 last_member = "nobody yet"
+last_member = log_signup(signups[0], last_member)
+last_member = log_signup(signups[1], last_member)
 # TODO: call log_signup on signups[0], then on signups[1], storing
 # what it returns back into last_member each time
 
@@ -259,8 +264,8 @@ def log_signup_broken(record):
 log_signup_broken(signups[2])
 
 # Your answer:
-#
-#
+#UnboundLocalError: cannot access local variable 'last_seen' where it is not associated with a value
+#This is the error after running python
 
 # ----- Share Out: Day 2 -----
 # Last 15 minutes, back together as a class. Bring:
