@@ -253,7 +253,7 @@ last_member = log_signup(signups[1], last_member)
 # TODO: call log_signup on signups[0], then on signups[1], storing
 # what it returns back into last_member each time
 
-last_seen = "nobody yet"
+#last_seen = "nobody yet"
 
 def log_signup_broken(record):
     # Leave this body exactly as written. It is supposed to raise.
@@ -261,7 +261,7 @@ def log_signup_broken(record):
     last_seen = record.split(",")[0]
     return last_seen
 
-log_signup_broken(signups[2])
+#log_signup_broken(signups[2])
 
 # Your answer:
 #UnboundLocalError: cannot access local variable 'last_seen' where it is not associated with a value
@@ -311,16 +311,35 @@ log_signup_broken(signups[2])
 # Three function names. Everything else is yours.
 
 def sessions_in(record):
-    pass
+    session = record.split(",")[2]
+    return int(session)
+
+print("Sessions_number:",sessions_in("Nia, Yoga, 4"))
+print("Sessions_number:",sessions_in("Tess, Yoga, 5"))
 
 def signups_for(records, member):
-    pass
+    member_list = []
+    for record in records:
+        if record.split(",")[0] == member:
+            member_list.append(record)
+    return member_list
+
+    print(signups_for(signups, "Nia"))
 
 def total_for(records, member):
-    # This one should get its work done by calling the other two.
-    pass
+    count = 0
+    for record in signups_for(records, member):
+         count += sessions_in(record)
 
-# TODO: print a line per member
+    return count
+    # This one should get its work done by calling the other two.
+
+#TODO: print a line per member
+print("Total number of sessions for Nia:", total_for(signups, "Nia"))
+print("Total number of sessions for Omar:", total_for(signups, "Omar"))
+print("Total number of sessions for Tess:", total_for(signups, "Tess"))
+print("Total number of sessions for Rafi:", total_for(signups, "Rafi"))
+print("Total number of sessions for Gwen:", total_for(signups, "Gwen"))
 
 # ===== Step 6: Run total_for() on Five Inputs Nobody Asked For, Then Judge Each Answer =====
 # No new functions. Call the ones you already have on inputs nobody asked
