@@ -372,9 +372,22 @@ print("2.One record total:", one_record)
 unknown_member = total_for(signups, "Jorge")
 print("3.Unknown member files:", unknown_member)
 # TODO: a member name that is not in the file at all
-Captilized_member = total_for()
+lowercase_member = total_for(signups, "nia")
+print("4.Lowercase name member:", lowercase_member)
 # TODO: a name that differs from a real member's only by capitalization
+empty_signup = signups_for([], "Nia")
+print("5.Empty signups:", empty_signup)
 # TODO: then: do the per-member totals add up to the whole-file total?
+sum_of_members = (
+    total_for(signups, "Nia") + 
+    total_for(signups, "Omar") + 
+    total_for(signups, "Tess") + 
+    total_for(signups, "Rafi") + 
+    total_for(signups, "Gwen")
+)
+grand_file_total = total_sessions(signups)
+
+print("6. Sum of members vs Grand Total:", sum_of_members, "vs", grand_file_total)
 
 # ----- Share Out: Day 3 -----
 # Last 15 minutes, back together as a class. Bring:
