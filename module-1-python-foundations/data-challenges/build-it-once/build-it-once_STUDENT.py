@@ -363,10 +363,16 @@ print("Total number of sessions for Gwen:", total_for(signups, "Gwen"))
 
 # No new functions. Call the ones you already have, on inputs nobody
 # asked for, and write a verdict beside each printed result.
-
+empty_list = total_for([], "Nia")
+print("1.Empty list total:", empty_list)
 # TODO: an empty list
+one_record = total_for(["Nia, Yoga, 4"], "Nia")
+print("2.One record total:", one_record)
 # TODO: a list holding exactly one record
+unknown_member = total_for(signups, "Jorge")
+print("3.Unknown member files:", unknown_member)
 # TODO: a member name that is not in the file at all
+Captilized_member = total_for()
 # TODO: a name that differs from a real member's only by capitalization
 # TODO: then: do the per-member totals add up to the whole-file total?
 
