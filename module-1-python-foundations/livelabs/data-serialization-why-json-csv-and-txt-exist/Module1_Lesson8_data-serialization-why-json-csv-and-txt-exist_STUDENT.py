@@ -4,6 +4,11 @@
 # ===== 1. Writing to a File =====
 # Write two restock reminders to a file called notes.txt, one per line.
 print('----- 1. Writing to a File -----')
+with open("notes.txt", "w") as f:
+    f.write("Restock staplers\n")
+    f.write("Restock printer paper\n")
+
+
 # TODO: use a `with` block and open("notes.txt", "w")
 # TODO: write "Restock staplers" and "Restock printer paper"
 # TODO: end each line with "\n"
@@ -12,12 +17,14 @@ print('----- 1. Writing to a File -----')
 # ===== 2. Reading It Back =====
 # Open notes.txt again and print everything inside it.
 print('----- 2. Reading It Back -----')
+with open("notes.txt") as f:
+    print(f.read())
 # TODO: use a `with` block and open("notes.txt")
 # TODO: print its full contents with f.read()
 
 # PREDICT before you run: Rewrite notes.txt in "w" mode. Do old lines survive?
 # Your answer:
-#
+#It was probably disappear since were changing the lines
 
 
 # ===== 3. A CSV File Is Just Plain Text =====
@@ -36,6 +43,12 @@ with open("supply.csv") as f:
 # ===== 4. Serializing a Record With json.dump() =====
 # Save one supply record, stored as a dict, to a file called supply.json.
 print('----- 4. Serializing a Record With json.dump() -----')
+import json
+supply = {"Stapler":12,"department": "Office", "name":"Stapler"}
+
+with open("supply.json", "w") as f:
+    json.dump(supply, f)
+
 # TODO: import json
 # TODO: create a dict called supply: name, count and department
 # TODO: use "Stapler", 12 and "Office"
@@ -45,10 +58,15 @@ print('----- 4. Serializing a Record With json.dump() -----')
 # ===== 5. Deserializing It Back With json.load() =====
 # Load supply.json back into Python and check that it is a real dict again.
 print('----- 5. Deserializing It Back With json.load() -----')
+with open("supply.json") as f:
+    supply = json.load(f)
+
+print(supply["name"])
+print(type(supply))
 # TODO: import json
 # TODO: open "supply.json"; read it into supply with json.load()
 # TODO: print supply["name"], then print type(supply)
 
 # PREDICT before you run: Dump a tuple to JSON and load it back. What type?
-# Your answer:
+# Your answer:a list
 #
