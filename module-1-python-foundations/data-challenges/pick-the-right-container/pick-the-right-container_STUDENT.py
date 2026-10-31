@@ -38,10 +38,11 @@ print("comparisons to find T040:", scan_for("T040", taps))
 print("comparisons to find T999:", scan_for("T999", taps))
 
 # Step 1, answer 1:
-#I predicted that T040, and T999 will be 40 while T001 will be 1 because 
+#I predicted that T040, and T999 will be 40 while T001 will be 1 because T999 is not a real id
+#so it would only stop at the most rows wwe have which is 40 and T001 is 1 due to being the first row.
 # Step 1, answer 2:
+#The three counts I should plan around is worst case cause it shows the future possible scales.
 #
-
 
 # Step 2: Print Scan Cost at 5 to 40 Rows, Then Count a Nested Pair Loop
 for size in [5, 10, 20, 40]:
@@ -65,9 +66,10 @@ print("worst case:", big , "|pair loops:", big * big)
 # TODO: print the scan's worst case and the pair loop's count on `big` rows
 
 # Step 2, answer 1:
-#
+#I would predict each count would be double itself from the last worst case comparisons and
+#the pair loops would be multiply to over 10000
 # Step 2, answer 2:
-#
+#The pattern is big , for the pair loop's is big * big
 
 
 # ===== Day 2 =====
