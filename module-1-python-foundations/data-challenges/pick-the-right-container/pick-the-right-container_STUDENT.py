@@ -188,11 +188,17 @@ print("about to serialize", len(summary), "keys")
 
 
 # Step 6: Write `tap_summary.json`, Reload It, and Check Which Types Survived
+#tap_summary.json
+summary["stations"] = sorted(stations)
+with open("tap_summary.json", "w")as f:
+    json.dump(summary, f)
+with open("tap_summary.json", "r")as f:
+    reloaded = json.load(f)
 
 # TODO: assign summary["stations"] to a type JSON can hold; keep the key
 # TODO: json.dump() `summary` into a with open("tap_summary.json", "w")
 # TODO: replace None with json.load() of "tap_summary.json"
-reloaded = None
+
 
 print("total_taps came back as:", reloaded["total_taps"])
 print("taps_by_card came back as a", type(reloaded["taps_by_card"]).__name__)
