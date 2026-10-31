@@ -105,9 +105,11 @@ print("comparisons the two parallel lists needed:", comparisons)
 print("busiest card:", card_ids[busiest], "with", max(tap_counts), "taps")
 
 # Step 3, answer 1:
-#
+#I expect there would be at least the same as the row like 40 or maybe double since it can double
+#each other, but I believe probably 40.
 # Step 3, answer 2:
-#
+#The reason it is bigger than the amount rows is it counts the repeated card_ids and
+# from the range of the code. 
 
 
 # Step 4: Count Taps Per Card With a Dictionary, and Stations With a Set
@@ -147,11 +149,17 @@ print("taps for C001:", taps_by_card["C001"])
 # Step 4, answer 1:
 #For look ups it'll probably be 40 cause there are 40 different rows of information
 # Step 4, answer 2:
-#As the Input Size grows the parallel list will start 
+#As the Input Size grows the parallel list will start slowing down and will create a longer loop
+#and the dictionary will continue being fast collecting all new files because it is linear.
 # Step 4, answer 3:
-#
+#The container for taps_by_card its job is to maps the card_ids to continue counting it as a value
+#and it finds it from mapping or hashing. The container for stations its job is it collects 
+#items and doesn't take any duplicates making sure there unique, they find it by find from keys like
+#hashing or mapping.The list would have cost us from the uniqueness of the items collecting even the
+#duplicates.
 # Step 4, answer 4:
-#
+#The card that explains the gap between the distinct cards and the repeat riders is the card that 
+#was only tapped once.
 
 
 # ===== Day 3 =====
@@ -184,7 +192,8 @@ print("about to serialize", len(summary), "keys")
 #    raise TypeError(f'Object of type {o.__class__.__name__} '
 #                    f'is not JSON serializable')
 # Step 5, answer 2:
-#
+#The key that caused this was the stations because it was turned into a set which affected how the json read the 
+#the rest of the other files that are stations.
 # Step 5, answer 3:
 #
 
