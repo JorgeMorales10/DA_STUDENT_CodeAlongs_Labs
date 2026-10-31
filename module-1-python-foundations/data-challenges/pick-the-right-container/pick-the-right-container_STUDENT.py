@@ -3,7 +3,7 @@
 
 import json
 
-DATA_FILE = "station_taps.csv"  # edit the filepath with the data
+DATA_FILE = "../data/station_taps.csv"  # edit the filepath with the data
 
 with open(DATA_FILE) as f:
     rows = [line.split(",") for line in f.read().splitlines() if line]
@@ -16,6 +16,14 @@ taps = rows[1:]
 
 # Step 1: Write `scan_for()` and Count Its Comparisons for Three Tap IDs
 def scan_for(tap_id, records):
+    comparisons = 0
+    for rows in records:
+        comparisons += 1
+        if rows[0] == tap_id:
+            return comparisons
+    
+    return comparisons
+
     # TODO: assign `comparisons` to 0
     # TODO: loop over `records`; add 1 to `comparisons` for every row
     # TODO: inside the loop, return `comparisons` when row[0] == tap_id
@@ -30,7 +38,7 @@ print("comparisons to find T040:", scan_for("T040", taps))
 print("comparisons to find T999:", scan_for("T999", taps))
 
 # Step 1, answer 1:
-#
+#I predicted that T040, and T999 will be 40 while T001 will be 1 because 
 # Step 1, answer 2:
 #
 
@@ -38,6 +46,17 @@ print("comparisons to find T999:", scan_for("T999", taps))
 # Step 2: Print Scan Cost at 5 to 40 Rows, Then Count a Nested Pair Loop
 for size in [5, 10, 20, 40]:
     worst = scan_for("T999", taps[:size])
+    print("rows:", size,"| worst-case comparisons:", worst)
+pairs = 0
+for x in taps:
+        for tap in taps:
+            pairs += 1
+
+print(len(taps), pairs)
+big = len(taps) * 10
+print("worst case:", big , "|pair loops:", big * big) 
+
+
     # TODO: print "rows:", `size`, "| worst-case comparisons:", `worst`
 # TODO: assign `pairs` to 0; loop over `taps` with a loop over `taps` inside
 # TODO: add 1 to `pairs` in the inner loop
@@ -54,6 +73,22 @@ for size in [5, 10, 20, 40]:
 # ===== Day 2 =====
 
 # Step 3: Count Taps Per Card With Two Parallel Lists, and Their Comparisons
+card_ids = []
+tap_counts = []
+comparisons = 0
+for row in taps:
+     card = row[1] 
+     found = False
+     for i in range(len(card_ids)):
+        comparisons += 1
+        if card_ids[i] == card:
+            tap_counts[i] += 1
+            found = True
+            break
+     if not found:
+         card_ids.append(card)
+         tap_counts.append(1)
+
 # TODO: assign `card_ids` to an empty list (each card, first-seen order)
 # TODO: assign `tap_counts` to an empty list (the count for card_ids[i])
 # TODO: assign `comparisons` to 0
@@ -74,6 +109,25 @@ print("busiest card:", card_ids[busiest], "with", max(tap_counts), "taps")
 
 
 # Step 4: Count Taps Per Card With a Dictionary, and Stations With a Set
+taps_by_card = {}
+lookups = 0
+for row in taps:
+    lookups += 1
+    if row[1] not in taps_by_card:
+        taps_by_card[row[1]] = 1
+    else:
+        taps_by_card[row[1]] += 1
+#be aware with using set add the dict to save the information your putting    
+stations = set()
+for x in taps:
+     stations.add(x[2])
+#when doing a .add be sure to use the current item in the loop
+    
+repeat_riders = 0
+for i in taps_by_card:
+    if taps_by_card[i] > 1:
+        repeat_riders += 1
+# you need to lookup value stored under the card id key inside your dict
 # TODO: assign `taps_by_card` to an empty dict (card ID: tap count)
 # TODO: assign `lookups` to 0
 # TODO: loop over `taps`; add 1 to `lookups`
@@ -89,9 +143,9 @@ print("cards that tapped more than once:", repeat_riders)
 print("taps for C001:", taps_by_card["C001"])
 
 # Step 4, answer 1:
-#
+#For look ups it'll probably be 40 cause there are 40 different rows of information
 # Step 4, answer 2:
-#
+#As the Input Size grows the parallel list will start 
 # Step 4, answer 3:
 #
 # Step 4, answer 4:
@@ -104,20 +158,29 @@ print("taps for C001:", taps_by_card["C001"])
 # TODO: replace each None with your Day 2 value; keep `stations` a set
 summary = {
     "service_day": "2026-03-02",
-    "total_taps": None,
-    "distinct_cards": None,
-    "stations": None,
-    "taps_by_card": None,
+    "total_taps": len(taps),
+    "distinct_cards": len(taps_by_card),
+    "stations": (stations),
+    "taps_by_card": taps_by_card,
 }
 
 print("about to serialize", len(summary), "keys")
 # TODO: run the file and answer below before you change anything
 # TODO: then put # in front of the next two lines so Step 6 can run
-text = json.dumps(summary, indent=2)
-print(text)
+#text = json.dumps(summary, indent=2)
+#print(text)
 
 # Step 5, answer 1:
-#
+#  File "C:\Users\Jorge Morales\AppData\Local\Python\pythoncore-3.15-64\Lib\json\__init__.py", line 241, in dumps
+#    **kw).encode(obj)
+##          ~~~~~~^^^^^
+#  File "C:\Users\Jorge Morales\AppData\Local\Python\pythoncore-3.15-64\Lib\json\encoder.py", line 202, in encode
+#    chunks = self.iterencode(o, _one_shot=True)
+#  File "C:\Users\Jorge Morales\AppData\Local\Python\pythoncore-3.15-64\Lib\json\encoder.py", line 263, in iterencode
+#    return _iterencode(o, 0)
+#  File "C:\Users\Jorge Morales\AppData\Local\Python\pythoncore-3.15-64\Lib\json\encoder.py", line 182, in default
+#    raise TypeError(f'Object of type {o.__class__.__name__} '
+#                    f'is not JSON serializable')
 # Step 5, answer 2:
 #
 # Step 5, answer 3:
@@ -125,6 +188,7 @@ print(text)
 
 
 # Step 6: Write `tap_summary.json`, Reload It, and Check Which Types Survived
+
 # TODO: assign summary["stations"] to a type JSON can hold; keep the key
 # TODO: json.dump() `summary` into a with open("tap_summary.json", "w")
 # TODO: replace None with json.load() of "tap_summary.json"

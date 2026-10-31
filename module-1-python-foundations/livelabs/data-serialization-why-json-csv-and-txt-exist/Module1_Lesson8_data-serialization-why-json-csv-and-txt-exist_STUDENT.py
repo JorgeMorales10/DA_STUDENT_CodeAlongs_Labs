@@ -49,6 +49,8 @@ supply = {"Stapler":12,"department": "Office", "name":"Stapler"}
 with open("supply.json", "w") as f:
     json.dump(supply, f)
 
+#print(supply)
+
 # TODO: import json
 # TODO: create a dict called supply: name, count and department
 # TODO: use "Stapler", 12 and "Office"
