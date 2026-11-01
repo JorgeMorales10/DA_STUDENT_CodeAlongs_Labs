@@ -195,7 +195,8 @@ print("about to serialize", len(summary), "keys")
 #The key that caused this was the stations because it was turned into a set which affected how the json read the 
 #the rest of the other files that are stations.
 # Step 5, answer 3:
-#
+#It printed in the error saying f' is not JSON serializable which tells me that the JSON
+#format does not recognize.
 
 
 # Step 6: Write `tap_summary.json`, Reload It, and Check Which Types Survived
@@ -218,6 +219,8 @@ print("stations came back as a", type(reloaded["stations"]).__name__)
 print("round trip identical:", reloaded["taps_by_card"] == taps_by_card)
 
 # Step 6, answer 1:
-#
+#Yes the overnight job get one card's count from this file without the raw log because from the 
+#print on ine 217 looks for that specific card being tapped on.
 # Step 6, answer 2:
-#
+#The container that survived the round trip is taps_by_card came back as a dict while the stations
+#came back as a list when it was a set before.
