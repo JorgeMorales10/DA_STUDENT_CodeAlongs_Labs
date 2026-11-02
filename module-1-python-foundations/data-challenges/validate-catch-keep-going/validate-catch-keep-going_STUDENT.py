@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate, Catch, Keep Going: see DataChallengeOverview&Steps.md."""
 
-DATA_FILE = "service_requests.csv"  # edit the filepath with the data
+DATA_FILE = "../data/service_requests.csv"  # edit the filepath with the data
 
 with open(DATA_FILE) as f:
     lines = f.read().splitlines()
@@ -13,14 +13,25 @@ rows = [line for line in lines[1:] if line]
 # ===== Day 1 =====
 
 # Step 1: Write `validate_request()` to Return a Verdict and a Reason
+EXPECTED_FIELDS = 5
+ALLOWED_STATUS = ["Open", "In Progress", "Closed"]
 # TODO: assign `EXPECTED_FIELDS` to 5
 # TODO: assign `ALLOWED_STATUS` to ["Open", "In Progress", "Closed"]
 
 
 def validate_request(row):
     # TODO: assign `fields` to `row` split on commas
+    fields = row.split(",")
     if len(fields) != EXPECTED_FIELDS:
         return False, "wrong field count: " + str(len(fields))
+    request_id, complaint_type, borough, days_open, status = fields
+    if borough == (""):
+        return False, "borough is empty" 
+    elif not status in ALLOWED_STATUS:
+        return False, "status not allowed: " + status
+    else: 
+        return True, "ok"
+    
     # TODO: unpack `fields` into the five names in the CSV header
     # TODO: if `borough` is empty, return False and "borough is empty"
     # TODO: if `status` is not in ALLOWED_STATUS, return False and a reason
@@ -34,12 +45,23 @@ print(validate_request("SR-1004,Rodent,,6,Closed"))
 print(validate_request("SR-1009,Water System,Queens,4,Escalated"))
 
 # Step 1, answer 1:
-#
+#One row holds request_id, complaint_type, borough, days_open, status, the problem with 
+#this is that the complaint_type are together which makes it harder reading it when it has 
+#two types of data which is complaints and the type of place it takes up with.
 # Step 1, answer 2:
-#
+#The caller take the two returned apart of one line by
 
 
 # Step 2: Run All 15 Rows Through the Validator and Report Each Rejection
+valid = 0
+for row in rows:
+    ok, reason = validate_request(row)
+    if ok:
+        valid += 1
+    else:
+        print(row.split(",")[0], "Rejected -", reason)
+
+
 # TODO: assign `valid` to 0
 # TODO: loop over `rows`; unpack validate_request(row) into ok, reason
 # TODO: if `ok`, add 1 to `valid`
@@ -50,14 +72,21 @@ print("rows read:", len(rows))
 print("passed Day 1 validation:", valid)
 
 # Step 2, answer 1:
-#
+#The amount of rows that fail the three rules is 3, each rule looks for boroughs not being
+#empty and status not being allowed because it has 3 distinct strings to define status.
 # Step 2, answer 2:
-#
+#The one that got through that shouldn't have was SR-1014 they missed the days_open being
+#-3, the reason the validator did not see them was because they were looking for borough and 
+#status, not the days_open or the other rows.
 
 
 # ===== Day 2 =====
 
 # Step 3: Build the Days-Open Report With No Protection and Watch It Crash
+total_days = 0
+counted = 0
+for row in rows:
+
 # TODO: assign `total_days` and `counted` to 0
 # TODO: loop over `rows`; `continue` past any row validate_request() rejects
 # TODO: assign `days_open` to int() of the row's fourth field
