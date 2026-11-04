@@ -49,7 +49,8 @@ print(validate_request("SR-1009,Water System,Queens,4,Escalated"))
 #this is that the complaint_type are together which makes it harder reading it when it has 
 #two types of data which is complaints and the type of place it takes up with.
 # Step 1, answer 2:
-#The caller take the two returned apart of one line by
+#The caller take the two returned apart of one line by acting like a tuple with a boolean value
+#and a string value.
 
 
 # Step 2: Run All 15 Rows Through the Validator and Report Each Rejection
@@ -86,6 +87,12 @@ print("passed Day 1 validation:", valid)
 total_days = 0
 counted = 0
 for row in rows:
+    continue validate_request(row)
+    days_open = int(row[4])
+    total_days = days_open + total_days
+    counted += 1
+    print(f"days open:", days_open)
+    
 
 # TODO: assign `total_days` and `counted` to 0
 # TODO: loop over `rows`; `continue` past any row validate_request() rejects
@@ -106,6 +113,13 @@ print("average days open:", total_days / counted)
 
 # Step 4: Rebuild the Report So Every Row Is Counted or Skipped
 def check_days_open(value):
+    try:
+        days = int(value)
+    except ValueError:
+        return False, "days_open is not a number:" + value
+    if days > 0:
+        return False, "days_open is negative:" + value
+    return True, "ok"
     # TODO: in a try, assign `days` to int(value)
     # TODO: in except ValueError, return False and a reason
     # TODO: make that reason "days_open is not a number: " plus `value`
@@ -114,6 +128,19 @@ def check_days_open(value):
     # TODO: return True and "ok"
     pass
 
+total_days = 0
+counted = 0
+skipped = 0
+for row in rows:
+    ok, reason = validate_request(row)
+    if ok:
+        ok, reason = check_days_open(row[4])
+    if ok:
+        total_days += days
+        counted += 1
+    else:
+        skipped += 1
+        print(f"SKIPPED - ", reason)
 
 # TODO: assign `total_days`, `counted` and `skipped` to 0
 # TODO: loop over `rows`; unpack validate_request(row) into ok, reason
@@ -121,7 +148,7 @@ def check_days_open(value):
 # TODO: if still ok, add the days to `total_days` and 1 to `counted`
 # TODO: else add 1 to `skipped`; print the ID, "SKIPPED -" and `reason`
 
-print("counted:", counted, "| skipped:", skipped)
+print("counted:", counted, "| skilpped:", skipped)u
 print("average days open:", round(total_days / counted, 1))
 
 # Step 4, answer 1:
