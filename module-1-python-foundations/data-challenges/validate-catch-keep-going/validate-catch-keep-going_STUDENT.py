@@ -86,12 +86,15 @@ print("passed Day 1 validation:", valid)
 # Step 3: Build the Days-Open Report With No Protection and Watch It Crash
 total_days = 0
 counted = 0
-for row in rows:
-    continue validate_request(row)
-    days_open = int(row[4])
-    total_days = days_open + total_days
-    counted += 1
-    print(f"days open:", days_open)
+#for row in rows:
+#    ok, reason = validate_request(row)
+#    if not ok:
+#        continue
+#    x = row.split(",")
+#    days_open = int(x[3])
+#    total_days += days_open 
+#    counted += 1
+#    print(x[0], "Days open:", days_open)
     
 
 # TODO: assign `total_days` and `counted` to 0
@@ -101,14 +104,17 @@ for row in rows:
 # TODO: print the row's ID, "days open:" and `days_open`
 # TODO: after your answers, comment out this step so Step 4 can run
 
-print("average days open:", total_days / counted)
+#print("average days open:", total_days / counted)
 
 # Step 3, answer 1:
-#
+#I predict that it would run till the request_id is SR-1007 because it's not a whole number
+#instead it says "3 days" which is not the same as "3" itself.
 # Step 3, answer 2:
-#
+#    days_open = int(x[3])
+#ValueError: invalid literal for int() with base 10: '3 days'
+#at least 6 rows were printed out.
 # Step 3, answer 3:
-#
+#The rows the loop never reaches doesn't ever get printed or read.
 
 
 # Step 4: Rebuild the Report So Every Row Is Counted or Skipped
@@ -117,7 +123,7 @@ def check_days_open(value):
         days = int(value)
     except ValueError:
         return False, "days_open is not a number:" + value
-    if days > 0:
+    if days < 0:
         return False, "days_open is negative:" + value
     return True, "ok"
     # TODO: in a try, assign `days` to int(value)
@@ -134,13 +140,14 @@ skipped = 0
 for row in rows:
     ok, reason = validate_request(row)
     if ok:
-        ok, reason = check_days_open(row[4])
+        ok, reason = check_days_open(row.split(",")[3])
     if ok:
-        total_days += days
+        days_value = int(row.split(",")[3])
+        total_days += days_value
         counted += 1
     else:
         skipped += 1
-        print(f"SKIPPED - ", reason)
+        print(row.split(",")[0], "SKIPPED - ", reason)
 
 # TODO: assign `total_days`, `counted` and `skipped` to 0
 # TODO: loop over `rows`; unpack validate_request(row) into ok, reason
@@ -148,12 +155,16 @@ for row in rows:
 # TODO: if still ok, add the days to `total_days` and 1 to `counted`
 # TODO: else add 1 to `skipped`; print the ID, "SKIPPED -" and `reason`
 
-print("counted:", counted, "| skilpped:", skipped)u
+print("counted:", counted, "| skipped:", skipped)
 print("average days open:", round(total_days / counted, 1))
 
 # Step 4, answer 1:
-#
+#At least 5 rows will show that they were skipped and the one my validator let through was the
+#SR-1007 which had a "3 days" and SR-1013 which had a negative number.
 # Step 4, answer 2:
-#
+#I would say if was missing unless you put a certain rule that can find it while try can also go through 
+#it all but would stop at a certain point as well.
 # Step 4, answer 3:
-#
+#Yes they count for each row that follows up with there rule as well as skipped where they both total
+#to at least 15 rows.
+#counted: 10 | skipped: 5
