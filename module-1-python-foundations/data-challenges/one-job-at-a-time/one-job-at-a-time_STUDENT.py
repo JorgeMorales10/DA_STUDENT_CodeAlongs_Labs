@@ -99,7 +99,8 @@ for category, stats in summary["by_category"].items():
           "lbs")
 
 # Step 2, answer 1:
-#
+#I chose protein and I counted 15.0 lbs in total for that category, and when I checked the output
+#and its the same.
 
 
 # ===== Day 2 =====
@@ -140,9 +141,11 @@ for func in [read_donations, validate_donation, summarize_donations,
     print(func.__name__ + ":", func.__doc__.splitlines()[0])
 
 # Step 3, answer 1:
-#
+#Print(len) prints the function reference object (<built-in function len>), whereas 
+#print(len("abc")) calls the function with parentheses and returns the integer 3
 # Step 3, answer 2:
-#
+#No I dont think we need to add and twice and my partner agreed
+
 
 
 # Step 4: Swap In `summarize_by_day()` and Count the Functions You Edited
@@ -178,6 +181,6 @@ for day, stats in sorted(reloaded["by_day"].items()):
     print(day, stats["donations"], "donations,", stats["pounds"], "lbs")
 
 # Step 4, answer 1:
-#
+#I edited at least 11 functions when I was doing the swap, the summarizer was reaching into 
 # Step 4, answer 2:
 #
