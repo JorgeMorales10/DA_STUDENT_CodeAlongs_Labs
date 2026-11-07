@@ -59,7 +59,8 @@ print(len(valid), "usable records out of", len(records))
 #On record it will hold at least 17 wil be usable out of 20, and the 9th donation_id was already wrong
 #its missing a category and 17 as well missing pounds but its the date in pounds category.
 # Step 1, answer 2:
-#The three things my validator promises about each record 
+#The three things my validator promises about each records is the missing category, pounds not being a number
+#and wrong field count.
 
 
 # Step 2: Write `summarize_donations()` for the Category Breakdown Only
@@ -181,6 +182,9 @@ for day, stats in sorted(reloaded["by_day"].items()):
     print(day, stats["donations"], "donations,", stats["pounds"], "lbs")
 
 # Step 4, answer 1:
-#I edited at least 11 functions when I was doing the swap, the summarizer was reaching into 
+#I edited at least 11 functions when I was doing the swap, the summarizer was reaching into how many 
+#times an item is being collected for each dates.
 # Step 4, answer 2:
-#
+#The three dates the donation only show 1 is 2026-09-05, 2026-09-07, and 2026-09-09. The reason some
+#of these dates are only showing 1 because they are either missing a column of data or the data has
+#a missed input for one of the columns and isn't being read as a correct data.
