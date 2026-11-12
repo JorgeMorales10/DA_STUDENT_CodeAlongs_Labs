@@ -27,11 +27,15 @@ print("stations in the file:", len(stations))
 for ranges in range(len(names)):
     print(names[ranges], "|", bikes[ranges], "bikes") 
 # Step 1, answer 1:
-#
+#The data file is dictionary of key values and the values of each one itself. One record shows the station_id, name,
+#capacity, bikes_available and needs_maintenance. station_id, name, and needs_maintenance are text while the capacity,
+#and bikes_availability are numbers. What seems wrong is there is false and true because boolean needs to be capitalize.
 # Step 1, answer 2:
-#
+#The names.pop(2) removes the third item from the names list, hands that removed string back to your program, and shifts every
+# item after it one spot to the left.
 # Step 1, answer 3:
-#
+#The bike counts we see elsewhere is "W 52 St & 11 Ave" in "Cooper Square & Astor Pl" and the bike count we don't ever see is 
+#"Amsterdam Ave & W 125 St" original count because it is counting the one before.
 
 
 # Step 2: Define the Station Class and Prove Two Instances Are Independent
@@ -80,8 +84,8 @@ print("After:", busy.needs_restock(), quiet.needs_restock())
 # ===== Day 2 =====
 
 # Step 3: Add `__str__` and Find Out Which of Four Prints It Changes
-print(fleet[0]) #this will print out the first record
-print(fleet[:2])
+#print(fleet[0]) #this will print out the first record
+#print(fleet[:2])
 
 class Station:
     def __init__(self, station_id, name, capacity, bikes_available, needs_maintenance):
@@ -93,7 +97,7 @@ class Station:
     def needs_restock(self):
         return self.bikes_available < self.capacity / 4
     def __str__(self): #self is the self attribute your working with
-        return f"{self.name}:{self.bikes_available} of {self.capacity} bikes" # f is the string literal\
+        return f"{self.name}:{self.bikes_available} of {self.capacity} bikes" # f is the string literal
     
 fleet = []
 for s in stations:
@@ -113,9 +117,12 @@ print(fleet[0])
 print(fleet[:2])
 
 # Step 3, answer 1:
-#
+#I expect the print of the before which shows False False and after which shows True False print of the needs_restock 
+# and then the __str__ showing the name, bikes_available, and the capacity but at the end will shows a station of an 
+# and each its own needs_restock of quiet and busy.
 # Step 3, answer 2:
-#
+#I was wrong about the last print of fleet because they can't use the method of __str__ but will need another magic 
+#method which is __repr__ which will print them out.
 
 
 # Step 4: Add `__repr__` and Print the Van List for You and the Dispatcher
@@ -148,6 +155,9 @@ print("Before:",busy.needs_restock(), quiet.needs_restock())
 busy.bikes_available = 0 
 print("After:", busy.needs_restock(), quiet.needs_restock()) 
 
+print(fleet[0])
+print(fleet[:2])
+
 # TODO: copy your Station class from Step 3 here
 # TODO: add __repr__(self) to return text like "Station('Grand Army Plaza', 6)"
 # TODO: rebuild `fleet` from this class with the same loop as Step 2
@@ -159,8 +169,10 @@ for station in van_list:
     print(station)
 
 # Step 4, answer 1:
-#
+#I would say at least 5 different stations land in van_list, the methods uses the __str__ method.
 # Step 4, answer 2:
-#
+#The __str__ method is for anyone to read and its a full summary of what print and easy to read while the 
+#__repr__ method is for the developers and programmers which shows all the syntax and how its built.
 # Step 4, answer 3:
-#
+#I would hand out the __str__ method to the dispatcher because it would be easier for them to read and understand
+#unless they are a programmer I would switch to the __repr__ method to show them a more detailed output.
