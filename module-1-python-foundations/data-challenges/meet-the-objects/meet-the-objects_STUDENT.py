@@ -72,20 +72,29 @@ print("After:", busy.needs_restock(), quiet.needs_restock())
 # TODO: set busy.bikes_available to 0, then print both answers again
 
 # Step 2, answer 1:
-#
+#def __init__(self, station_id, name, capacity, bikes_available, needs_maintenance):
+#        self.name = name
+#        self.station_id = station_id
+#        self.capacity = capacity
+#        self.bikes_available = bikes_available
+#        self.needs_maintenance = needs_maintenance
 # Step 2, answer 2:
-#
+#As I went to writing the rest of these codes I realized that it was not align with the others because of 
+# the order and I felt like this will help better with gathering more specific details.
 # Step 2, answer 3:
-#
+#I would say we would drop the station_id because we can still find the location from the name and the dispatcher 
+# it also never mentions the ID codes only the stations names but adding the ID can help because it is its own unique identity.
 # Step 2, answer 4:
-#
+#We tested it with the two stations and the output was both False because they had plenty of bikes but when we changed 
+# the busy.bikes_availability to 0 we were able to discover that restock status changed to True but the quiet restock still 
+# stayed as False.
 
 
 # ===== Day 2 =====
 
 # Step 3: Add `__str__` and Find Out Which of Four Prints It Changes
-#print(fleet[0]) #this will print out the first record
-#print(fleet[:2])
+print(fleet[0]) #this will print out the first record
+print(fleet[:2])
 
 class Station:
     def __init__(self, station_id, name, capacity, bikes_available, needs_maintenance):
