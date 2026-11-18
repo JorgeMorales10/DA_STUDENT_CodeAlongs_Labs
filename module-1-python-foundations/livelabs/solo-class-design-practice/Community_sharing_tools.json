@@ -2,7 +2,6 @@
     {
      "Tool_name": "drills",
      "Date": "Nov 11th",
-     "Hours_opened": 3,
      "Available_tools": 5,
      "Tools_in_use": 2,
      "Safety_check": true
@@ -10,15 +9,13 @@
     {
      "Tool_name": "ladders",
      "Date": "Nov 11th",
-     "Hours_opened": 3,
      "Available_tools": 3,
      "Tools_in_use": 1,
-     "Safety_check": true
+     "Safety_check": false
     },
     {
      "Tool_name": "power washers",
      "Date": "Nov 11th",
-     "Hours_opened": 3,
      "Available_tools": 4,
      "Tools_in_use": 4,
      "Safety_check": true
@@ -26,41 +23,22 @@
     {
      "Tool_name": "saws",
      "Date": "Nov 11th",
-     "Hours_opened": 3,
      "Available_tools": 2,
      "Tools_in_use": 0,
-     "Safety_check": true
-    },
-    {
-     "Tool_name": "drills",
-     "Date": "Nov 11th",
-     "Hours_opened": 6,
-     "Available_tools": 3,
-     "Tools_in_use": 4,
      "Safety_check": false
     },
     {
-     "Tool_name": "ladders",
-     "Date": "Nov 11th",
-     "Hours_opened": 6,
-     "Available_tools": 1,
-     "Tools_in_use": 3,
-     "Safety_check": true  
+    "Tool_name": "hammers",
+    "Date": "Nov 11th",
+    "Available_tools": 6,
+    "Tools_in_use": 3,
+    "Safety_check": true
     },
     {
-     "Tool_name": "power washers",
-     "Date": "Nov 11th",
-     "Hours_opened": 6,
-     "Available_tools": 2,
-     "Tools_in_use": 6,
-     "Safety_check": false
-    },
-    {
-     "Tool_name": "saws",
-     "Date": "Nov 11th",
-     "Hours_opened": 6,
-     "Available_tools": 0,
-     "Tools_in_use": 2,
-     "Safety_check": false
+    "Tool_name": "screwdrivers",
+    "Date": "Nov 11th",
+    "Available_tools": 8,
+    "Tools_in_use": 5,
+    "Safety_check": true
     }
 ]
