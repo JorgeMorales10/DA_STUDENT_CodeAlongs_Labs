@@ -45,10 +45,11 @@ print('----- 2. The Script, Part 2: The Data -----')
 games = [
     BoardGame("Catan", 3, "Strategy"),
     BoardGame("Uno", 0, "Card"),
-    BoardGame("Chess", 2, "strategy"),
-    BoardGame("Sorry!", 4, "Strategy"),
+    BoardGame("Chess", 2, "strategy"),#the word strategy needs to have an uppercase S
+    BoardGame("Sorry!", 4, "Strategy"),#this extra comma shouldn't be here ending it
 ]
-
+# A syntax error here 
+# As well as a Logic Error
 
 # ===== 3. The Script, Part 3: Counting Strategy Games =====
 # This loop is meant to count how many games are in the Strategy category, then
@@ -63,7 +64,7 @@ for i in range(len(games) - 1):
 print("--- Summary ---")
 print("Category: Strategy")
 print("Count:", strategy_count)
-
+#A logic error 
 
 # ===== 4. The Script, Part 4: Counting Available Games =====
 # This loop is meant to count how many games have at least one open player
