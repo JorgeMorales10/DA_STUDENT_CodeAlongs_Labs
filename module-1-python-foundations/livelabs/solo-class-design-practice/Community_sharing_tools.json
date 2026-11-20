@@ -16,7 +16,7 @@
     {
      "Tool_name": "power washers",
      "Date": "Nov 11th",
-     "Available_tools": 4,
+     "Available_tools": 0,
      "Tools_in_use": 4,
      "Safety_check": true
     },
@@ -30,8 +30,8 @@
     {
     "Tool_name": "hammers",
     "Date": "Nov 11th",
-    "Available_tools": 6,
-    "Tools_in_use": 3,
+    "Available_tools": 0,
+    "Tools_in_use": 7,
     "Safety_check": true
     },
     {
