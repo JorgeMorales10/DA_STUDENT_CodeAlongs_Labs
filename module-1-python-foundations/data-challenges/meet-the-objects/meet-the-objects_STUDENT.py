@@ -127,7 +127,7 @@ print(fleet[:2])
 
 # Step 3, answer 1:
 #I expect the print of the before which shows False False and after which shows True False print of the needs_restock 
-# and then the __str__ showing the name, bikes_available, and the capacity but at the end will shows a station of an 
+# and then the __str__ showing the name, bikes_available, and the capacity but at the end it will shows a station 
 # and each its own needs_restock of quiet and busy.
 # Step 3, answer 2:
 #I was wrong about the last print of fleet because they can't use the method of __str__ but will need another magic 
