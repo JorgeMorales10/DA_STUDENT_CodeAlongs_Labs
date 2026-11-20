@@ -12,6 +12,12 @@ with open(DATA_FILE, newline="") as f:
 
 # Step 1: Write `find_linear()` to Return the Member and Its Comparisons
 def find_linear(members, member_id):
+    comparisons = 0
+    for row in members:
+        comparisons += 1
+        if row["member_id"] == member_id:
+            return row, comparisons
+    return None, comparisons
     # TODO: assign `comparisons` to 0
     # TODO: loop over `members`; add 1 to `comparisons` for every row
     # TODO: inside the loop, return row, comparisons on a member_id match
@@ -29,6 +35,12 @@ print("comparisons:", count)
 
 
 # Step 2: Total the Comparisons for All 20 Swipes in `door_checkins.txt`
+with open(CHECKINS_FILE) as f:
+    swipes = f.read().splitlines()
+linear_total = 0
+not_members = 0
+for swipe in swipes:
+    
 # TODO: open CHECKINS_FILE in a with block as `f`
 # TODO: inside it, assign `swipes` to f.read().splitlines()
 # TODO: assign `linear_total` and `not_members` to 0
@@ -80,7 +92,8 @@ print("morning totals | linear:", linear_running, "| dict:", dict_running)
 # TODO: replace the text below with your AI's claim, word for word
 ai_claim = "TODO: paste what your AI actually told you"
 print("AI CLAIM:", ai_claim)
-
+_, front_count = find_linear(swipes[0])
+_, absent_count = find_linear("M1313")
 # TODO: unpack find_linear() for swipes[0] into `_, front_count`
 # TODO: unpack find_linear() for "M1313" into `_, absent_count`
 # TODO: assign `ratio` to round(linear_running / dict_running, 1)
