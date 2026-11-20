@@ -113,12 +113,12 @@ print(saws.Safety_check)
 print(hammers.Safety_check)
 #predict = True
 #output = True 
-print(f"Tools:{screwdrivers.Tool_name}, {drills.Safety_check}, {drills.Available_tools}")
 # ===== Step 5: Justify Your Design Choice in 2-3 Sentences =====
 
 # Your answer:
-#
-#
+#The reason I chose this design was because it was the most recent work we've been doing and I like using dictionary to 
+#help create a more neater and easier design. I felt more confident in building it up with import json and creating a class,
+#method,objects and attributes. It felt like a better way to find and look for an issue and specific way to find each commands made.
 
 # ----- Share Out -----
 # Last 15 minutes, back together as a class. Bring:
@@ -140,5 +140,6 @@ print(f"Tools:{screwdrivers.Tool_name}, {drills.Safety_check}, {drills.Available
 # Be ready to answer "why did you do it that way?"
 
 # Your notes for the share out:
-#
-#
+#They were also using json but they were adding more attributes and labeling was different a bit.
+#I was changing my objects and its attributes because it was getting more difficult for me to continue 
+#it and made it simpler with less and trying to understand each part better.
