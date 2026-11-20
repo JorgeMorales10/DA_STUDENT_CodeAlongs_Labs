@@ -33,14 +33,19 @@ SUBMIT
 # lecture, and not one of the project's own 4 scenarios.
 
 # Your answer:
-#
-#
+#The stake holder needs the Tool names or identifier, as well as the Tools available and are in use, and 
+#they need a safety check or inspection of the tools that are capable.
 
 # ===== Step 2: Decide Your Attributes, Each With a Reason From the Scenario =====
 
 # Your answer:
-#
-#
+#    def __init__(self,Tool_name, Date, Available_tools, Tools_in_use, Safety_check):
+#        self.Tool_name = This is naming each individual tools and name
+#        self.Date = Keeping the track of the date of the tools being used
+#        self.Available_tools = Showing the amount of available tools there are
+#        self.Tools_in_use = This helps show how many tools are still being used while trying to seek the others
+#        self.Safety_check = This is the label that is checking whether they have done inspection or safety check so it could be used or not
+
 
 # ===== Step 3: Write __init__ and a Method, From Scratch =====
 # There is no single correct design here. Your class name, your attribute
@@ -49,13 +54,66 @@ SUBMIT
 # paragraph.
 
 # TODO: Write __init__ and a Method, From Scratch
+import json
 
+DATA_FILE = "Community_sharing_tools.json"
+
+with open(DATA_FILE) as f:
+    stations = json.load(f)
+
+class Tools:
+    def __init__(self,Tool_name, Date, Available_tools, Tools_in_use, Safety_check):
+        self.Tool_name = Tool_name
+        self.Date = Date
+        self.Available_tools = Available_tools
+        self.Tools_in_use = Tools_in_use
+        self.Safety_check = Safety_check
+    def Availability_check(self):
+        if self.Available_tools == 0:
+            return "No Available tools at the moment, out of stock."
+        else:
+            return "Yes, we have some available tools for you."
+    def Safety_checked(self):
+        if self.Safety_check == True:
+            return "We checked and clear."
+        else:
+            return "No hasn't been checked."
+    def __str__(self):
+        return f"(Tools{self.Tool_name}: {self.Safety_check()}, {self.Availability_check()})"
 # ===== Step 4: Instantiate 2+ Objects, Confirm Independent Storage =====
 # The same proof Day 13's lecture asked for, now on a class you designed
 # yourself. Predict what each print() will show before you run it.
+drills = Tools("drills","Nov 11th", 5, 2, True)
+ladders = Tools("ladders","Nov 11th", 3, 1, False)
+saws = Tools("saws", "Nov 11th", 2, 0, False)
+hammers = Tools("hammers", "Nov 11th", 0, 7, True)
 
+print(drills.Availability_check())
+#predictions = Yes, we have some available tools for you.
+#output = Yes, we have some available tools for you.
+print(ladders.Availability_check())
+#predictions = Yes, we have some available tools for you.
+#output = Yes, we have some available tools for you.
+print(saws.Availability_check())
+#predictions = Yes, we have some available tools for you.
+#output = Yes, we have some available tools for you.
+print(hammers.Availability_check())
+#predictions = No Available tools at the moment, out of stock.
+#output = No Available tools a the moment, out of stock.
 # TODO: Instantiate 2+ Objects, Confirm Independent Storage
-
+print(drills.Safety_check)
+#predict =True
+#output=True
+print(ladders.Safety_check)
+#predict = False
+#output = False
+print(saws.Safety_check)
+#predict =False
+#output = False
+print(hammers.Safety_check)
+#predict = True
+#output = True 
+print(f"Tools:{screwdrivers.Tool_name}, {drills.Safety_check}, {drills.Available_tools}")
 # ===== Step 5: Justify Your Design Choice in 2-3 Sentences =====
 
 # Your answer:
