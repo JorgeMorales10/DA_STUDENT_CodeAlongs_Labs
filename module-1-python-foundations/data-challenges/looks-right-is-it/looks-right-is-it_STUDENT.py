@@ -35,9 +35,12 @@ print("Rosa Alvarez, weekly hours:", weekly_hours(lines, "E101"))
 # Step 1, answer 1:
 #The total hours Rosa works up to is 40 hours when looking at the csv.
 # Step 1, answer 2:
-#
+#To read the traceback you will need to look at the last line of a traceback shows the exception type and message explaining why Python stopped.
+#Each block above it shows a file, line number, function name, and code line in the call chain
+# (reading bottom-up traces from where Python gave up back to callers), reading call stacks bottom-up.
 # Step 1, answer 3:
-#
+#The function the traceback ended in was the total + hours showing a TypeError and the line that was holding the real
+#bug was the total = add_hours(total, parts[2]) because it wasn't counting the hours but days as well as not turning it into a integer.
 
 
 # Step 2: Trace the ZeroDivisionError Back to the Hand-Typed Staff List
