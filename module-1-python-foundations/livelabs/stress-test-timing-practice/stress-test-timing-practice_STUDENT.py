@@ -101,8 +101,24 @@ print(lookup.get("Tool 99999").tool_name)
 import time  # Python's built-in module; time.perf_counter() is new
 
 # TODO: predict first: which time grows with size? Write it here:
-# Prediction:
+# Prediction:The column that should grow as size grows is the linear search time with the batch size (O(N))
+#when searching. The column that stays the same is the dictionary look up time because it will stay the same when
+#searching because it will average around the same regardless of batch size.
 
+pairs = [(10, small_batch), (100, medium_batch), (1000, large_batch)]
+
+for size, batch in pairs:
+    lookup = build_lookup(batch)
+
+    start = time.perf_counter()
+    find_by_name_linear(batch, "NotThere")
+    linear_time = time.perf_counter() - start
+
+    start = time.perf_counter()
+    lookup.get("NotThere")
+    dict_time = time.perf_counter() - start
+
+    print(size, linear_time, dict_time)
 # TODO: make a list of (size, batch) pairs for your three batches
 # TODO: loop over that list: for size, batch in pairs:
 # TODO:   lookup = build_lookup(batch)
@@ -117,8 +133,10 @@ import time  # Python's built-in module; time.perf_counter() is new
 # ===== Step 4: Answer Your Manager's Question in One Sentence, in Big-O Terms =====
 
 # Your answer:
-#
-#
+#As I was checking the speed of each linear and dictionary started from the small batch and going to the large batch I 
+#was able to see the difference between them and from the linear(O(n)) it started to slow down as the items increase from
+#100x from 8.2 micro seconds to 1,667.2 micro seconds while for dictionary(O(1)) you can see it keep a steady pace when 
+#going from an item increase of 100x and it seemed to keep an average of 2.7 micro seconds.
 
 # ===== Step 5: Optional Stretch: Ask an AI How to Speed Up Your Linear Scan, Then Make It Prove It =====
 # Stretch work only - beyond the core lab budget. Take it if you finish
