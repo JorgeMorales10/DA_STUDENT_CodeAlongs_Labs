@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Looks Right. Is It?: see DataChallengeOverview&Steps.md for the steps."""
 
-DATA_FILE = "timesheet_hours.csv"  # edit the filepath with the data
+DATA_FILE = "../data/timesheet_hours.csv"  # edit the filepath with the data
 
 with open(DATA_FILE) as f:
     lines = f.read().splitlines()
@@ -17,6 +17,7 @@ with open(DATA_FILE) as f:
 # TODO: wrap that value in int() so add_hours() adds a number
 # TODO: delete the print(repr(hours)) line once Rosa's total is right
 def add_hours(total, hours):
+    print(repr(hours))
     return total + hours
 
 
@@ -25,7 +26,7 @@ def weekly_hours(lines, emp_id):
     for row in lines[1:]:
         parts = row.split(",")
         if parts[0] == emp_id:
-            total = add_hours(total, parts[2])
+            total = add_hours(total, int(parts[3]))
     return total
 
 
